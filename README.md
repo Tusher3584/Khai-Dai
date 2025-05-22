@@ -1,4 +1,4 @@
-# Food Delivery App
+# Khai-Dai - A Food Delivery App
 
 A full-stack food delivery application built with **React** (frontend) and **NestJS** (backend).  
 The project follows **Clean Architecture** principles for modularity, scalability, and maintainability.
