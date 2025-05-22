@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Env files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Coverage/test
+coverage/
+.nyc_output/
+
+# OS
+.DS_Store
