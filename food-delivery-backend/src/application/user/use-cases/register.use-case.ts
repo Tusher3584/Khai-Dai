@@ -1,15 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { IUserRepository } from '../../../domain/user/repositories/user.repository';
 import { User } from '../../../domain/user/entities/user.entity';
 import { BcryptService } from '../../../infrastructure/bcrypt/bcrypt.service';
 import { RegisterDto } from '../../../presentation/user/dtos/register.dto';
 import { v4 as uuid } from 'uuid';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class RegisterUseCase {
   constructor(
-    private readonly userRepo: IUserRepository,
-    private readonly bcryptService: BcryptService
+    @Inject('IUserRepository') private readonly userRepo: IUserRepository,
+    private readonly bcryptService: BcryptService,
+    private readonly jwtService: JwtService
   ) {}
 
   async execute(dto: RegisterDto): Promise<User> {

@@ -9,11 +9,25 @@ export class UserRepositoryImpl implements IUserRepository {
 
   async create(user: User): Promise<User> {
     const created = await this.prisma.user.create({ data: user });
-    return new User(created.id, created.email, created.password, created.role, created.name);
+    return new User(
+      created.id,
+      created.email,
+      created.password,
+      created.role as 'Customer' | 'Admin' | 'Delivery',
+      created.name ?? undefined
+    );
   }
 
   async findByEmail(email: string): Promise<User | null> {
     const found = await this.prisma.user.findUnique({ where: { email } });
-    return found ? new User(found.id, found.email, found.password, found.role, found.name) : null;
+    return found
+      ? new User(
+          found.id,
+          found.email,
+          found.password,
+          found.role as 'Customer' | 'Admin' | 'Delivery',
+          found.name ?? undefined
+        )
+      : null;
   }
 }
