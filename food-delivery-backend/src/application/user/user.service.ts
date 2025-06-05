@@ -1,8 +1,7 @@
- import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { RegisterUseCase } from './use-cases/register.use-case';
 import { LoginUseCase } from './use-cases/login.use-case';
-import { RegisterDto } from '../../presentation/user/dtos/register.dto';
-import { LoginDto } from '../../presentation/user/dtos/login.dto';
+
 @Injectable()
 export class UserService {
   constructor(
@@ -10,11 +9,11 @@ export class UserService {
     private readonly loginUseCase: LoginUseCase
   ) {}
 
-  register(dto: RegisterDto) {
-    return this.registerUseCase.execute(dto);
+  register(userProps: { email: string; password: string; name?: string; role?: 'Customer' | 'Admin' | 'Delivery' }) {
+    return this.registerUseCase.execute(userProps);
   }
 
-  login(dto: LoginDto) {
-    return this.loginUseCase.execute(dto);
+  login(loginProps: { email: string; password: string }) {
+    return this.loginUseCase.execute(loginProps);
   }
 }
