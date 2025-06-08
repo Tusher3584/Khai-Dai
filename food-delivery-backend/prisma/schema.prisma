@@ -26,3 +26,21 @@ model User {
   role     Role
   name     String?
 }
+
+model Restaurant {
+  id          String     @id @default(uuid())
+  name        String
+  description String?
+  address     String?
+  rating      Float?
+  menuItems   MenuItem[]
+}
+
+model MenuItem {
+  id           String   @id @default(uuid())
+  restaurantId String
+  name         String
+  description  String?
+  price        Float
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+}
