@@ -15,53 +15,55 @@
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
 }
 
+.form-logo {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  max-width: 120px;
+  height: auto;
+}
+
 .form-container h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-.form-container input {
+.form-container input,
+.form-container select {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-.form-container input:focus {
-  border-color: #007bff;
-  outline: none;
 }
 
 .form-container button {
   width: 100%;
   padding: 0.75rem;
-  background: #007bff;
+  background: #47c5ed;
   color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .form-container button:hover {
-  background: #0056b3;
+  background: #269ec7;
 }
 
-.form-container .message {
+.message {
   margin-top: 1rem;
   text-align: center;
-  color: #d9534f;
   font-size: 1rem;
 }
 
-.form-logo {
-  display: block;
-  margin: 0 auto 1.5rem auto;
-  max-width: 120px;
-  height: auto;
+.message.success {
+  color: #28a745;
+}
+
+.message.error {
+  color: #d9534f;
 }

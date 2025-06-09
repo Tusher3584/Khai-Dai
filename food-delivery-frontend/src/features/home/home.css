@@ -1,0 +1,16 @@
+.home-bg {
+  min-height: 100vh;
+  background: #47c5ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-logo-container {
+  text-align: center;
+}
+
+.home-logo {
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
