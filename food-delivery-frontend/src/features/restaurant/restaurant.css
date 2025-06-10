@@ -1,0 +1,62 @@
+.restaurant-list-bg, .restaurant-detail-bg, .restaurant-form-bg {
+  min-height: 100vh;
+  background: #f5f6fa;
+  padding: 2rem;
+}
+
+.restaurant-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.restaurant-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  min-width: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.restaurant-form input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.restaurant-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #47c5ed;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.restaurant-form button:hover {
+  background: #269ec7;
+}

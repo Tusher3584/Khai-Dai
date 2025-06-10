@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../user.api';
 import '../user.css';
 import logo from '../../../assets/khai-dai-high-resolution-logo-transparent.png';
@@ -6,6 +7,7 @@ import logo from '../../../assets/khai-dai-high-resolution-logo-transparent.png'
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); 
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -13,7 +15,10 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const res = await loginUser(form);
-      setMessage('Login successful! Token: ' + res.data.token);
+      setMessage('Login successful!');
+      setTimeout(() => {
+        navigate('/restaurants');
+      }, 1000);
     } catch (err) {
       setMessage('Login failed: ' + (err.response?.data?.message || err.message));
     }
