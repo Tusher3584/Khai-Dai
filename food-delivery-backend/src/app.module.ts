@@ -5,7 +5,7 @@ import { RestaurantModule } from './presentation/restaurant/restaurant.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }), // <-- add this line
+    ConfigModule.forRoot({ isGlobal: true }), 
     UserModule,
     RestaurantModule,
   ],
