@@ -6,9 +6,25 @@ import { LoginUseCase } from '../../application/user/use-cases/login.use-case';
 import { UserRepositoryImpl } from '../../infrastructure/user/user.repository.impl';
 import { PrismaService } from '../../infrastructure/database/prisma.service';
 import { BcryptService } from '../../infrastructure/bcrypt/bcrypt.service';
-import { JwtService } from '@nestjs/jwt';
+import { JwtService, JwtModule } from '@nestjs/jwt';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtTokenService } from '../../infrastructure/jwt/jwt.service';
 
 @Module({
+  imports: [
+    ConfigModule, // <-- add this if not already present
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        console.log('JWT_SECRET in useFactory:', config.get<string>('JWT_SECRET'));
+        return {
+          secret: config.get<string>('JWT_SECRET'),
+          signOptions: { expiresIn: '1d' },
+        };
+      },
+    }),
+  ],
   controllers: [UserController],
   providers: [
     UserService,
@@ -16,7 +32,8 @@ import { JwtService } from '@nestjs/jwt';
     LoginUseCase,
     PrismaService,
     BcryptService,
-    JwtService,
+    //JwtService,
+    JwtTokenService,
     {
       provide: 'IUserRepository',
       useClass: UserRepositoryImpl,
@@ -27,7 +44,7 @@ import { JwtService } from '@nestjs/jwt';
     },
     {
       provide: 'IJwtService',
-      useClass: JwtService,
+      useClass: JwtTokenService, // <-- FIXED HERE
     },
   ],
   exports: [UserService],
