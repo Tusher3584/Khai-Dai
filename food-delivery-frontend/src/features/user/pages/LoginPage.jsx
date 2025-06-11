@@ -4,6 +4,14 @@ import { loginUser } from '../user.api';
 import '../user.css';
 import logo from '../../../assets/khai-dai-high-resolution-logo-transparent.png';
 
+function parseJwt(token) {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch {
+    return {};
+  }
+}
+
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -15,6 +23,11 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const res = await loginUser(form);
+      // Decode and store the role
+      const { token } = res.data;
+      const payload = parseJwt(token);
+      localStorage.setItem('role', payload.role);
+      localStorage.setItem('token', token);
       setMessage('Login successful!');
       setTimeout(() => {
         navigate('/restaurants');

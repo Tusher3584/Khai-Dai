@@ -6,7 +6,7 @@ import '../restaurant.css';
 
 export default function RestaurantListPage() {
   const [restaurants, setRestaurants] = useState([]);
-  const isAdmin = true; // Replace with real auth check
+  const isAdmin = localStorage.getItem('role') === 'Admin'; 
   const navigate = useNavigate();
 
   useEffect(() => {

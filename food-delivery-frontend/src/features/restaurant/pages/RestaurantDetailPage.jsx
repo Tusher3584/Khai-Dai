@@ -11,8 +11,7 @@ export default function RestaurantDetailPage() {
   const [restaurant, setRestaurant] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
   const [editingMenuItem, setEditingMenuItem] = useState(null);
-  const isAdmin = true; // Replace with real auth check
-  const navigate = useNavigate();
+  const isAdmin = localStorage.getItem('role') === 'Admin'; 
 
   useEffect(() => {
     getRestaurant(id).then(res => setRestaurant(res.data));
