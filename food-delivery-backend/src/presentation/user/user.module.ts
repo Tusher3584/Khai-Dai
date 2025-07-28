@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { OrderModule } from '../order/order.module';
 import { UserController } from './controllers/user.controller';
 import { UserService } from '../../application/user/user.service';
 import { RegisterUseCase } from '../../application/user/use-cases/register.use-case';
@@ -14,6 +15,7 @@ import { JwtTokenService } from '../../infrastructure/jwt/jwt.service';
   imports: [
     ConfigModule,
     JwtTokenModule, 
+    OrderModule
   ],
   controllers: [UserController],
   providers: [

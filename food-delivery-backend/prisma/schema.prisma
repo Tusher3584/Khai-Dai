@@ -44,3 +44,27 @@ model MenuItem {
   price        Float
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
 }
+
+model Cart {
+  userId     String   @id
+  items      Item[]
+  totalPrice Float
+}
+
+model Order {
+  id              String   @id @default(uuid())
+  userId          String
+  items           Json
+  deliveryAddress String
+  status          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Item {
+  id         String   @id @default(uuid())
+  menuItemId String
+  quantity   Int
+  cartUserId     String
+  cart       Cart     @relation(fields: [cartUserId], references: [userId])
+}
