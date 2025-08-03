@@ -59,7 +59,7 @@ The project follows **Clean Architecture** principles for modularity, scalabilit
 - Backend: NestJS (Node.js)  
 - Database: (e.g., PostgreSQL, MongoDB)  
 - API communication: RESTful API  
-- Architecture: Clean Architecture (Domain, Application, Infrastructure, Interfaces layers)  
+- Architecture: Clean Architecture (Domain, Application, Infrastructure, Presentation layers)  
 
 ---
 
