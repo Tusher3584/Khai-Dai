@@ -14,6 +14,7 @@ export default function RestaurantDetailPage() {
   const isAdmin = localStorage.getItem('role') === 'Admin'; 
 
   useEffect(() => {
+     console.log("RestaurantDetailPage mounted"); // Commit marker
     getRestaurant(id).then(res => setRestaurant(res.data));
     getMenuItems(id).then(res => setMenuItems(res.data));
   }, [id]);
